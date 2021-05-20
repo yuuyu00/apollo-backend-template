@@ -1,0 +1,39 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:prisma.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+model Foo {
+  id Int @default(autoincrement()) @id
+  name String?
+}
+
+model User {
+  id    Int     @default(autoincrement()) @id
+  email String  @unique
+  name  String?
+  events Event[]
+  balanceId Int
+  balance Balance @relation(fields: [balanceId], references: [id])
+}
+
+model Event {
+  id Int @default(autoincrement()) @id
+  addedById Int
+  addedBy User @relation(fields: [addedById], references: [id])
+  amount Int
+  memo String?
+}
+
+model Balance {
+  id Int @default(autoincrement()) @id
+  name String
+  amount Int
+  member User[]
+}

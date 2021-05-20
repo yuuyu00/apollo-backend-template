@@ -1,0 +1,9 @@
+node_modules/
+dist/
+src/generated/
+src/gqlTypes.ts
+*.env*
+schema/schema.gql
+.DS_Store
+prisma/*.db
+prisma/*.db-journal

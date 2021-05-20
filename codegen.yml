@@ -1,0 +1,12 @@
+schema: "./schema/schema.gql"
+generates:
+  src/gqlTypes.ts:
+    plugins:
+      - typescript
+      - typescript-resolvers
+    config:
+      mapperTypeSuffix: Model
+      mappers:
+        Foo: "@prisma/client/index.d#Foo"
+      contextType: ./context#Context
+      useIndexSignature: true
