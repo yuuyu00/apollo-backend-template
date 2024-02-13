@@ -7,6 +7,7 @@ import { resolvers } from "./resolvers";
 const getTypeDefs = () => {
   const schemaPath = path.join("schema/", "schema.gql");
   const schemaStr = readFileSync(schemaPath, "utf8");
+
   return gql`
     ${schemaStr}
   `;
